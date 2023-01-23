@@ -61,7 +61,7 @@ function enableButtons(){
         if (audioOn){
             document.querySelector("#audio-button").textContent="🔇"
             document.querySelectorAll("audio").forEach((sound) => {
-                sound.volume = 0.1
+                sound.volume = 0.05
             });
         } else {
             document.querySelector("#audio-button").textContent="🔊"
