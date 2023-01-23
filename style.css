@@ -150,6 +150,7 @@ text-align: left;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
     word-wrap: nowrap;
+    white-space: nowrap;
 }
 
 
