@@ -4,6 +4,9 @@
     --glow-effect: rgba(0, 183, 27, 0.573);
 }
 * {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
     font-family: 'VT323', monospace;
     box-sizing: border-box;
     margin: 0;

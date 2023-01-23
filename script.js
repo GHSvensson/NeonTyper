@@ -27,7 +27,9 @@ const delay = {
 let difficulty = "normal"
 let lives = 3;
 let score = 0
+
 let audioOn = false
+let fullscreenOn = false
 
 window.addEventListener("DOMContentLoaded",()=>{
     difficulty = localStorage.getItem("difficulty") || "normal";
@@ -45,6 +47,14 @@ function enableButtons(){
     document.querySelector("#checkmark-button").addEventListener("click",()=>{
         document.querySelector("#modal-instr").classList.add("hidden");
     });
+    document.querySelector("#full-screen-button").addEventListener("click",()=>{
+        fullscreenOn = !fullscreenOn
+        if (fullscreenOn){
+            document.querySelector("body").requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    })
     document.querySelector("#audio-button").addEventListener("click", ()=>{
         document.querySelector("#background-music").play();
         audioOn = !audioOn
