@@ -1,0 +1,234 @@
+:root{
+    --cursor-pointer: url('images/cursors/cursorPointer.png'),pointer;
+    --cursor-auto: url('images/cursors/cursorAuto.png'),auto;
+    --glow-effect: rgba(0, 183, 27, 0.573);
+}
+* {
+    font-family: 'VT323', monospace;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    cursor: var(--cursor-auto);
+}
+.hidden{
+    display: none;
+}
+#screen{
+position:relative;
+max-width: 100%;
+width: 100vw;
+height: 56.25vw;
+overflow: hidden;
+color: rgb(7, 255, 40);
+font-family: sans-serif;
+cursor: var(--cursor-auto);
+
+}
+.screen{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    }
+#top-bar{
+    text-align: right;
+    font-size: 5vw;
+}
+#top-bar p{
+    display: inline-block;
+    cursor: pointer;
+    cursor: var(--cursor-pointer);
+}
+#menu{
+    position:absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+#menu p{
+    display: block;
+    font-size: 2.5vw;
+    margin-top: 1vw;
+    text-align: center;
+    cursor: var(--cursor-pointer);
+}
+#menu p:hover{
+
+}
+#menu h1 {
+    font-size: 5vw;
+    margin-bottom: 10vw;
+}
+/* adding easy difficulty info window */
+#easy {
+    position:absolute
+}
+#easy p{
+display: block;
+font-size: 1.5vw;
+margin-top:0.5vw;
+text-align: left;
+}
+/* 
+charles code */
+.button {
+    font-size: 1rem;
+    font-weight: bold;
+    display: inline-block;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--glow-effect);
+    border: 0.125em solid var(--glow-effect);
+    text-decoration: none;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+  
+    text-shadow: 0 0 0.25em rgba(0, 247, 82, 0.5), 0 0 1em var(--glow-effect);
+  
+    box-shadow: inset 0 0 0.5em 0 var(--glow-effect), 0 0 0.5em 0 var(--glow-effect);
+    position: relative;
+    transition: background-color 100ms linear;
+  }
+  
+   .button:last-of-type:before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background: var(--glow-effect);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.25);
+    filter: blur(1.5em);
+    opacity: 0.7;
+  
+  } 
+  
+  .button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--glow-effect);
+    opacity: 0;
+    background-color: black;
+    z-index: -1;
+    transition: opacity 100ms linear;
+  
+  }
+  
+  .button:hover::after {
+    opacity: .8;
+  }
+  
+  .button:hover,
+  .button:focus {
+    background-color: var(--glow-effect);
+    color: black;
+    text-shadow: none;
+    }
+#falling-words{
+    position:relative;
+    width: 80%;
+    height: 100%;
+    margin-inline:auto;
+    font-size: 5vw;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+#falling-words p{
+    position:absolute;
+    animation-name: fall;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    word-wrap: nowrap;
+}
+
+
+@keyframes fall{
+    0%{
+        top: -5%;
+    }
+    100%{
+        top: 100%;
+    }
+}
+.active-word{
+    text-decoration: underline;
+}
+#falling-words p span {
+    opacity: 25%;
+    transition-duration: 200ms;
+}
+#falling-words p span.typed{
+    opacity: 100%;
+}
+#score{
+    position: absolute;
+    top: 0;
+    left: 1vw;
+    font-size: 3vw;
+}
+#heart-container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    font-size: 3vw; 
+}
+.modal{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgb(0, 0, 0);
+    border: 1vw solid green;
+    border-radius: 1vw;
+    text-align: center;
+    padding: 5vw;
+    
+}
+.modal h2 {
+    margin-bottom: 5vw;
+    font-size: 4vw;
+}
+.modal p {
+    font-size: 4vw;
+}
+#pills-container {
+    display: flex;
+    gap: 1vw;
+}
+#pills-container p {
+    font-size: 2vw;
+    text-align: center;
+}
+#pills-container .active {
+    background-color: var(--glow-effect);
+    color: black;
+    text-shadow: none;
+}
+#checkmark-button {
+    display: inline-block;
+    cursor: var(--cursor-pointer);
+}
+#modal-end-screen {
+    padding: 1vw;
+}
+#end-screen-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1vw;
+}
+#end-screen-buttons img {
+    cursor: var(--cursor-pointer);
+}

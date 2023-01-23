@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeonTyper</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="screen">
+        <div id="start-screen" class="screen">
+            <div id="top-bar">
+                <p>🏆</p>
+                <p>⚙️</p>
+            </div>
+            <div id="menu">
+                <h1>NeonTyper</h1>
+                <p id="start-button"class="button">Start Game</p>
+                <div id="pills-container">
+                    <p data-diff="easy" class="button">Easy</p>
+                    <p data-diff="normal" class="button">Normal</p>
+                    <p data-diff="hard" class="button">Hard</p>
+                </div>
+                <p id="instr-button"class="button">Instructions</p>
+            </div> 
+        </div>
+        <div id="game-screen" class="screen hidden">
+            <div id="falling-words"></div>
+            <div id="score">0</div>
+            <div id="heart-container">
+                <div id="life-3">💚</div>
+                <div id="life-2">💚</div>
+                <div id="life-1">💚</div>
+            </div>
+            <div id="modal-end-screen"class="modal hidden">
+                <div id="end-screen-buttons">
+                    <img id="return-button"src="images/green-arrow.png" alt="Return to menu button">
+                </div>
+                <h2>You lost</h2>
+                <p>Score: </p>
+            </div>
+        </div>
+        <div id="modal-instr"class="modal hidden">
+            <p id="instr">Type the words before they reach the ground</p>
+            <p id="checkmark-button">✅</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
