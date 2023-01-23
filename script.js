@@ -27,39 +27,58 @@ const delay = {
 let difficulty = "normal"
 let lives = 3;
 let score = 0
- 
+let audioOn = false
 
 window.addEventListener("DOMContentLoaded",()=>{
     difficulty = localStorage.getItem("difficulty") || "normal";
     document.querySelector(`[data-diff=${difficulty}]`).classList.add("active");
-
-
+    enableButtons();
+    document.querySelectorAll("audio").forEach((sound) => {
+        sound.volume = 0.1
+    });
+})
+function enableButtons(){
     document.querySelector("#start-button").addEventListener("click",startGame);
     document.querySelector("#instr-button").addEventListener("click",()=>{
         document.querySelector("#modal-instr").classList.remove("hidden");
     })
     document.querySelector("#checkmark-button").addEventListener("click",()=>{
-        document.querySelector("#modal-instr").classList.add("hidden");        
+        document.querySelector("#modal-instr").classList.add("hidden");
     });
-
+    document.querySelector("#audio-button").addEventListener("click", ()=>{
+        document.querySelector("#background-music").play();
+        audioOn = !audioOn
+        if (audioOn){
+            document.querySelector("#audio-button").textContent="🔇"
+            document.querySelectorAll("audio").forEach((sound) => {
+                sound.volume = 0.1
+            });
+        } else {
+            document.querySelector("#audio-button").textContent="🔊"
+            document.querySelectorAll("audio").forEach((sound) => {
+                sound.volume = 0
+            });
+        }
+    })
     document.querySelectorAll("#pills-container .button").forEach(button =>{
         button.addEventListener("click",()=>{
             document.querySelector(".active").classList.remove("active");
             button.classList.add("active")
             difficulty=button.textContent.toLocaleLowerCase();
             localStorage.setItem("difficulty",difficulty);
+
         });
     })
     document.querySelector("#return-button").addEventListener("click",()=>{
         document.querySelector("#game-screen").classList.add("hidden")
     })
-})
+}
 function startGame(){
     resetGame();
     window.addEventListener("keydown",readInput);
     document.querySelector("#game-screen").classList.remove("hidden");
     genWord();
-    }
+}
 function resetGame(){
     lives = 3
     score = 0
@@ -103,7 +122,8 @@ function setActiveWord(){
 }
 function readInput(e){
     const letter=document.querySelector(".active-letter");
-    console.log(e.key)
+    document.querySelector(`#typeman-${Math.floor(Math.random() * 4) + 1}`).play();
+
      if(e.key===letter?.textContent) {
         letter.classList="typed";
         if (letter.nextElementSibling){
